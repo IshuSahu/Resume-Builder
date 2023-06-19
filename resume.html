@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Create Your resume</title>
+  <style>
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+    }
+    
+    .container h1 {
+      text-align: center;
+      color: #333333;
+    }
+
+    .container form {
+      margin-top: 20px;
+    }
+
+    .container label {
+      display: block;
+      margin-top: 10px;
+      color: #333333;
+      font-weight: bold;
+    }
+
+    .container input[type="text"],
+    .container input[type="tel"],
+    .container input[type="email"],
+    .container textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+    }
+
+    .container textarea {
+      height: 100px;
+    }
+
+    .container input[type="file"] {
+      margin-top: 10px;
+    }
+
+    .container .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      text-align: center;
+      background-color: #27374D;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .container .btn:hover {
+      background-color: #1e2d40;
+    }
+
+    .container #generatedResume {
+      margin-top: 20px;
+    }
+
+    .container #downloadBtnContainer {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #generatedResume {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+    }
+
+    .upper {
+      text-align: center;
+      margin-bottom: 20px;
+      background-color: #333;
+    }
+
+   
+    .upper #photo {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+    .upper #name {
+      font-size: 24px;
+      color: white;
+      margin-bottom: 10px;
+    }
+    
+    .upper #address,
+    .upper #contact {
+      font-size: 14px;
+      color: white;
+      margin-bottom: 5px;
+    }
+
+    .mid {
+      margin-bottom: 20px;
+    }
+
+    .mid h3 {
+      font-size: 18px;
+      color: #333333;
+      margin-bottom: 10px;
+    }
+
+    .mid p {
+      font-size: 14px;
+      color: #333333;
+      margin-bottom: 5px;
+    }
+
+    .bottom {
+      margin-bottom: 20px;
+    }
+
+    .bottom h3 {
+      font-size: 18px;
+      color: #333333;
+      margin-bottom: 10px;
+    }
+
+    .bottom p {
+      font-size: 14px;
+      color: #333333;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Create Your resume here!</h1>
+    <form id="resumeForm" onsubmit="event.preventDefault(); generateResume();">
+      <div class="personal-details">
+        <h2>Personal details</h2>
+        <label for="name">Name</label>
+        <input type="text" id="name" required>
+
+        <label for="address">Address</label>
+        <input type="text" id="address" required>
+
+        <label for="mobile">Mobile No.</label>
+        <input type="tel" id="mobile" pattern="[0-9]{10}" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+      </div>
+
+      <div class="Qualifications">
+        <h2>Qualifications</h2>
+        <div class="qualification-details" id="qualification-details-10th">
+          <h3>10th</h3>
+          <label for="college-10th">College Name:</label>
+          <input type="text" id="college-10th">
+          <label for="percentile-10th">Percentage:</label>
+          <input type="text" id="percentile-10th">
+          <label for="year-10th">Year of passing:</label>
+          <input type="text" id="year-10th">
+        </div>
+        <div class="qualification-details" id="qualification-details-12th">
+          <h3>12th</h3>
+          <label for="college-12th">College Name:</label>
+          <input type="text" id="college-12th">
+          <label for="percentile-12th">Percentage:</label>
+          <input type="text" id="percentile-12th">
+          <label for="year-12th">Year of passing:</label>
+          <input type="text" id="year-12th">
+        </div>
+        <div class="qualification-details" id="qualification-details-graduation">
+          <h3>Graduation</h3>
+          <label for="college-graduation">College Name:</label>
+          <input type="text" id="college-graduation">
+          <label for="percentile-graduation">Percentage:</label>
+          <input type="text" id="percentile-graduation">
+          <label for="year-graduation">Year of passing:</label>
+          <input type="text" id="year-graduation">
+        </div>
+        <div class="qualification-details" id="qualification-details-postgraduation">
+          <h3>Post-Graduation</h3>
+          <label for="college-postgraduation">College Name:</label>
+          <input type="text" id="college-postgraduation">
+          <label for="percentile-postgraduation">Percentage:</label>
+          <input type="text" id="percentile-postgraduation">
+          <label for="year-postgraduation">Year of passing:</label>
+          <input type="text" id="year-postgraduation">
+        </div>
+      </div>
+
+      <label for="hobbies">Hobbies</label>
+      <input type="text" id="hobbies">
+
+      <label for="skills">Skills</label>
+      <textarea id="skills"></textarea>
+
+      <label for="photo">Photograph</label>
+      <input type="file" id="photo">
+
+      <button type="submit" class="btn">Generate Resume</button>
+    </form>
+
+    <div id="generatedResume" class="resume" style="display: none;"></div>
+    <div class="download-btn" id="downloadBtnContainer" style="display: none;"></div>
+  </div>
+
+  <script>
+    function generateResume() {
+      const name = document.getElementById('name').value;
+      const qualificationDetails = document.querySelectorAll('.qualification-details');
+      const address = document.getElementById('address').value;
+      const mobile = document.getElementById('mobile').value;
+      const email = document.getElementById('email').value;
+      const hobbies = document.getElementById('hobbies').value;
+      const skills = document.getElementById('skills').value;
+
+      // Get the selected photo file
+      const photoInput = document.getElementById('photo');
+      const photoFile = photoInput.files[0];
+      const photoURL = URL.createObjectURL(photoFile);
+
+
+      // Create the resume layout
+      let resumeHTML = `
+      <div class="upper">
+        <img id="photo" src="${photoURL}" style="height: 100px; width: 100px; border-radius: 50%;">
+        <h2 id="name">${name}</h2 >
+        <p id="address">${address}</p>
+        <p id="contact">${mobile}, ${email}</p>
+      </div> `;
+
+      resumeHTML += `
+      <div class="Bottom">
+        <h3>Hobbies</h3>
+          <p>${hobbies}</p>
+          <h3>Skills</h3>
+          <p>${skills}</p>
+          <h3>Qualification Details</h3>
+        </div>
+      `;
+
+      qualificationDetails.forEach(function (details) {
+        const collegeInput = details.querySelector('input[type="text"]');
+        const percentileInput = details.querySelector('input[type="text"] ~ label[for^="percentile"]');
+        const yearInput = details.querySelector('input[type="text"] ~ label[for^="year"]');
+
+        const college = collegeInput.value;
+        const percentile = percentileInput.nextElementSibling.value;
+        const year = yearInput.nextElementSibling.value;
+
+        if (college && percentile && year) {
+          resumeHTML += `
+          <div class="mid">
+            <h3>${details.querySelector('h3').textContent}</h3>
+            <p>College Name: ${college}</p>
+            <p>Percentage: ${percentile}</p>
+            <p>Year: ${year}</p>
+          </div>
+            `;
+        }
+      });
+
+      const generatedResume = document.getElementById('generatedResume');
+      generatedResume.innerHTML = resumeHTML;
+      generatedResume.style.display = 'block';
+
+      const downloadBtnContainer = document.getElementById('downloadBtnContainer');
+      downloadBtnContainer.innerHTML = `
+    <a href="data:text/html;charset=utf-8,${encodeURIComponent(
+        '<html>' + document.head.innerHTML + document.getElementById('generatedResume').outerHTML + '</html>'
+      )}" download="resume.html" class="btn">Download Resume</a>  
+  `;
+      downloadBtnContainer.style.display = 'block';
+    }
+  </script>
+
+</body>
+
+</html>
