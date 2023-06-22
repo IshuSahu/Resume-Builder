@@ -141,3 +141,22 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+/* Making REsposive to the design! */
+@media Only screen and (max-width:600px){
+    .Logo {
+        width: 30%;
+        height: 30px;
+    }
+    #home h1 {
+        font-size: 2.2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #ffffff;
+    }
+    #home .MainText {
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+}
